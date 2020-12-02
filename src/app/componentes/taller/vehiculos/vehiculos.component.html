@@ -1,0 +1,62 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div  style="width: 40%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;
+            text-align: center; margin:0px auto;    padding: 10px;">
+                <b>Modulo de Vehiculos</b>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 " style="margin: auto;">
+        <div class="col-12 col-sm-12 col-md-9 col-lg-8 col-xl-7" style="text-align: center; margin: auto;">
+            <div class="row">
+                <div class="dato col-9 col-sm-9 col-md-5 col-lg-5 col-xl-5" style="text-align: center;margin: auto;">
+                    <label style="color: white;">Filtrado por Placa:</label> <br>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="text-align: center;">
+                    <input type="search"  style="margin: auto; width: 200px; " class="form-control" [(ngModel)]="placa">
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-1">
+                    <button style="width: 120px; height: 40px; margin: auto;" class=" boton form-control" (click)="filtro()">
+                        <b>Filtrar</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <table class="table mt-3">
+        <thead style="background-color: #DAC0CF;">
+                <tr >
+                <th id="no3">#</th>
+                <th id="no">Tipo</th>
+                <th >Placa</th>
+                <th id="no2">Marca</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of listVehiculos; index as i">
+                <td class="bordesid" routerLink="{{l.idVehiculo}}" id="no3" style=" text-align: center;   width: 1%;">{{i+1}}</td>
+                <td class="bordes" routerLink="{{l.idVehiculo}}" id="no" style=" text-align: center;   width: 3%;">{{l.tipo}}</td>
+                <td class="bordes" routerLink="{{l.idVehiculo}}" style=" text-align: center;   width: 3%;">{{l.placa}}</td>
+                <td class="bordes" routerLink="{{l.idVehiculo}}" id="no2" style=" text-align: center;   width: 5%;">{{l.marca}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="bordesid" style="background-color: #DAC0CF;text-align: start;">
+                <th id="no3"></th>
+                <th id="no"></th>
+                <th id="no2"></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row mt-5">
+        <div class="col-12" style="text-align: center;  ">
+            <button style="width: 120px; height: 60px; margin: auto;" class=" boton form-control" routerLink="crear">
+                <b>Registrar Vehiculo</b>
+            </button>
+        </div>
+    </div>
+</main>

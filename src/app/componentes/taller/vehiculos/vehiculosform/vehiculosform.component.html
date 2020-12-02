@@ -1,0 +1,351 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="mt-2" *ngIf="tipo == 'crear'" >
+        <div class="row mb-2">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||REGISTRO DE VEHICULOS, TALLER VEHICULAR"</b>
+            </div>
+        </div>
+        
+        <div class="row mb-2" style="margin: auto;text-align: center;">
+            <img src="{{VehiculoForm.value.imagenVehiculo}}" class="rounded-circle" style="width: 200px;margin: auto;">    
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <form [formGroup]="VehiculoForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Marca:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="marca" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Modelo:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="modelo" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Placa:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="placa" >
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="col-6" >
+                <form [formGroup]="VehiculoForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Imagen:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="imagenVehiculo" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Color:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="color" >
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Tipo:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <select class="form-control" id="sel1" formControlName="tipo" >
+                                <option value=Motos> Motos </option>
+                                <option value=Camiones> Camiones </option>
+                                <option value=Automoviles> Automoviles </option>
+                                <option value=Camionetas> Camionetas </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                        <button class="boton form-control" (click)="crear()">Guardar</button>
+                    </div>
+                    <div class="col">
+                        <button class="boton form-control" routerLink="/vehiculos">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="ListVehiculo && tipo == 'update'" >
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||ACTUALIZACIÓN DEL VEHICULO, TALLER VEHICULAR"</b>
+              </div> 
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <form [formGroup]="VehiculoForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Marca:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="marca" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Modelo:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="modelo" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Placa:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="placa" >
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Tipo:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <select class="form-control" id="sel1" formControlName="tipo" >
+                                <option value=Motos> Motos </option>
+                                <option value=Camiones> Camiones </option>
+                                <option value=Automoviles> Automoviles </option>
+                                <option value=Camionetas> Camionetas </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="col-6" >
+                <form [formGroup]="VehiculoForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Imagen:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="imagenVehiculo" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Color:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="color" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Creacion:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="fechaCreacion" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Actualizacion:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="fechaActualizacion" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                        <button class="boton form-control" (click)="actualizar()">Guardar</button>
+                    </div>
+                    <div class="col">
+                        <button class="boton form-control"  (click)="cambiar('vista')">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="ListVehiculo&& tipo == 'vista'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DATOS DEL VEHICULO, TALLER VEHICULAR"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-5">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de Identificación:
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nro de Placa:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListVehiculo.placa}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Modelo:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListVehiculo.modelo}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Marca:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListVehiculo.marca}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de vehiculo:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListVehiculo.tipo}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Color:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListVehiculo.color}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;" >
+                <img src="{{ListVehiculo.imagenVehiculo}}" class="rounded-circle" style="margin: auto;" width="200px">      
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Propietarios del vehiculo</legend>
+                    <div class="control-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="lista m-3" style="text-align: center;" *ngFor="let v of vehiculos">
+                                    <div class="row">
+                                        <div class="col-9 col-sm-9 col-md-6 col-lg-7 col-xl-7" style="text-align: center;margin: auto;">
+                                            <img class="imagen" src="{{v.idPropietario.idUsuario.imagenUser}}" width="100px">
+                                            <p id="no"><b>Cedula:</b>{{v.idPropietario.cedula}}</p> 
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+                                            <a id="no"><b>Nombres: </b></a> {{v.idPropietario.nombre}}<br>
+                                            <a id="no"><b>Apellidos: </b></a>  {{v.idPropietario.apellidos}}<br>
+                                            <a id="no"><b>Telefono: </b></a>  {{v.idPropietario.telefono}}<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                        <button class="boton form-control" (click)="cambiar('update')">Editar Datos</button>
+                    </div>
+                    <div class="col">
+                        <button class="boton form-control" routerLink="/vehiculos">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="margin: auto;">Vehiculo {{tipoV}} Por:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="UsuarioCAForm">
+                <div class="mb-5" style="margin: auto;text-align: center;">
+                    <img src="{{UsuarioCAForm.value.imagenUser}}" class="rounded-circle" style="width: 200px;margin: auto;">    
+                </div>
+                <div class="row mb-5">
+                    <div class="dato col-2">
+                        Usuario:
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" formControlName="nombreUsuario" >
+                    </div>
+                    <div class="dato col-1">
+                        Rol:
+                    </div>
+                    <div class="col-5">
+                        <input type="text" class="form-control" value={{rolCA}} disabled>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="dato col-2">
+                        Estado:
+                    </div>
+                    <div class="col-4">
+                        <select class="form-control" id="sel1" formControlName="estadoContrato" >
+                            <option value=false> No autorizado </option>
+                            <option value=true> Autorizado </option>
+                        </select>
+                    </div>
+                    <div class="dato col-1">
+                        ID:
+                    </div>
+                    <div class="col-5">
+                        <input type="text" class="form-control" formControlName="id" >
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

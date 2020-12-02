@@ -1,0 +1,115 @@
+main {
+    color: rgb(218, 192, 207);
+    margin-left: 5rem;
+    padding: 1rem; 
+}
+
+@media only screen and (max-width:599px){
+
+    main{
+        margin-right: 0%;
+        margin-left: 0%;
+        margin-top: 5rem;
+        width: 100%;
+    }
+}
+input{
+    border: 1px solid #EC808D;
+    background-color: #DAC0CF;
+    width: 100%;
+}
+select{
+    border: 1px solid #EC808D;
+    background-color: #F2F2F2;
+    width: 100%;
+    color: #6D000E;
+}
+.form-control:disabled{
+    background-color: #F2F2F2;
+    color: #750036;
+    font-weight: bold;
+    border-color: 1px solid #EC808D;
+}
+.boton{
+    width: 120px !important;
+    text-align: center !important;
+    margin: auto !important;
+    background-color: #daaeb3 !important;  
+    border: 1px solid #FC7DB2 !important; 
+    border-radius: 8px; 
+    color: black !important;
+}
+.col-4, .col-sm-9 ,.col-md-4 ,.col-lg-4 ,.col-xl-4,.col-12 ,.col-sm-12 ,.col-md-8 ,.col-lg-8 ,.col-xl-8,.col-6
+.col-9 ,.col-md-4 ,.col-lg-4 ,.col-xl-4,.col-12 ,
+.col-sm-12 ,.col-md-8 ,.col-lg-8 ,.col-xl-8,.col-6, .col-md-6 ,.col-lg-6 ,.col-xl-6
+,.col-5 ,.col-7,.col-8,.col-md-6,.col-10{
+    position: initial;
+}
+@media only screen and (max-width:600px){
+    .rounded-circle{
+        width: 180px;
+    }
+    .imagen{
+        width: 70px !important;
+    }
+}
+@media only screen and (max-width:430px){
+    .rounded-circle{
+        width: 170px;
+    }
+    .imagen{
+        width: 70px !important;
+    }
+}
+@media only screen and (max-width:409px){
+    .rounded-circle{
+        width: 160px;
+    }
+    .imagen{
+        width: 70px !important;
+    }
+}
+@media only screen and (max-width:387px){
+    .rounded-circle{
+        width: 150px;
+    }
+    .imagen{
+        width: 50px !important;
+    }
+    #no{
+        display: none;
+    }
+}
+
+table{
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+}
+th{
+    border: 1px solid #EC808D;
+    color: #750036;
+    border-bottom: 2px solid #EC808D !important;
+}
+td{
+    border-top: 0px solid  #EC808D;
+}
+.bordesid{
+    color: #750036;
+    background-color: #DAC0CF;
+    border-color: #EC808D;
+    border-top:  1px #EC808D;
+    border-left: 1px solid  #EC808D;
+    border-bottom: 1px solid  #EC808D;
+    border-right: 1px solid  #EC808D;
+}
+.bordes{
+    text-align: start;
+    color: #750036;
+    background-color:white;
+    border-top: #EC808D;
+    border-color:  1px #EC808D;
+    border-left: 1px solid  #EC808D;
+    border-bottom: 1px solid  #EC808D;
+    border-right: 1px solid  #EC808D;
+}

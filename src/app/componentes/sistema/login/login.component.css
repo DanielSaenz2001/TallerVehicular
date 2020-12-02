@@ -1,0 +1,64 @@
+input{
+    -webkit-box-shadow: 10px 10px 10px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 10px -5px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 10px -5px rgba(0,0,0,0.75);
+}
+
+.card{
+    border: 0.1px solid black;
+}
+.card-header{
+    border-bottom: 0.1px solid black;
+}
+.card-body{
+    border: 0px solid black;
+}
+.google:hover {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+input{
+    border: 1px solid #EC808D;
+    background-color: #DAC0CF;
+    margin: auto;
+    width: 60%;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #750036;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #750036;
+   opacity: 1 /* esto es porque Firefox le reduce la opacidad por defecto */;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #750036;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #750036;
+}
+
+
+@media (min-width: 1202px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 610px;
+    }
+}
+@media (max-width: 1201px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 610px;
+    }
+}
+@media (max-width: 993px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 610px;
+    }
+}
+
+
+@media (max-width: 577px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 610px;
+    }
+}
+

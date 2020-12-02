@@ -1,0 +1,153 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="mt-2" *ngIf="tipo == 'vistaServicio'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DETALLES DEl PRESUPUESTO DEL VEHICULO"</b>
+              </div> 
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="lista m-3" style="text-align: center;" *ngFor="let item of ListServicio">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <h4>{{item.nombre}}</h4>
+                            <a id="no"><b>Precio por servicio: </b></a>{{item.precioServicio}} <br>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <a id="no"><b>Descripción: </b></a>{{item.descripcion}} <br>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <button style="width: 180px !important; "  class=" boton form-control" (click)="cambiar('verServicio', item.idServicio)">
+                                <b>Ver repuestos</b>
+                            </button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="regresar()">
+                               <b> Regresar</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="tipo == 'verServicio' && ListDetalleServicio">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DETALLES DEl PRESUPUESTO DEL VEHICULO"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-5">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" >
+                        Cedula
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nro de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.cedula}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Apellidos:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.apellidos}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nombre:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.nombre}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Telefono:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.telefono}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Correo:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;" >
+                <img src="{{ListDetalleServicio.idEmpleadoServicio.idUsuario.imagenUser}}" class="rounded-circle" style="margin: auto;">      
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Repuestos</legend>
+                    <div class="control-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="lista2 m-3" style="text-align: center;" *ngFor="let v of Repuestos">
+                                    <div class="row">
+                                        <div class="col-12 col-sm12 col-md-12 col-lg-12 col-xl-12" style="text-align: center;margin: auto;">
+                                            <h4> <p id="no"><b>Respuesto:</b>  {{v.idRespuesto.nombre}}</p> </h4>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <a id="no"><b>Precio: </b></a> {{v.idRespuesto.precio}} <br>
+                                            <a id="no"><b>Descuento: </b></a> {{v.descuentoRepuesto}} <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('vistaServicio')">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

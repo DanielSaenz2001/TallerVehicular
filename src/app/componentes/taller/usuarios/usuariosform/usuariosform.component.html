@@ -1,0 +1,371 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="mt-2" *ngIf="tipo == 'crear'" >
+        <div class="row mb-2">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||REGISTRO DEL EMPLEADOS, TALLER VEHICULAR"</b>
+            </div>
+        </div><div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+            <div style="text-align: center;">
+                {{error}}
+            </div>
+            <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                <span aria-hidden="true" style="color: black;">&times;</span>
+            </button>
+        </div>
+        <div class="row mb-2" style="margin: auto;text-align: center;">
+            <img src="{{UsuarioForm.value.imagenUser}}" class="rounded-circle" style="width: 200px;margin: auto;">    
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <form [formGroup]="empleadoForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Nombre:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="nombre" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Apellidos:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="apellidos" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Cedula:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="cedula" >
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Correo:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text"  class="form-control" formControlName="email" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Telefono:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text"  class="form-control" formControlName="telefono" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6" style="text-align: center;">
+                <form [formGroup]="UsuarioForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Usuario:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="nombreUsuario" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Contraseña:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="password" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Imagen:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="search" class="form-control" formControlName="imagenUser" >
+                            
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Estado:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <select class="form-control" id="sel1" formControlName="estadoContrato" >
+                                <option value=false> No autorizado </option>
+                                <option value=true> Autorizado </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>   
+                <form [formGroup]="RoleUserRolForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Rol:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <select class="form-control" id="sel1" formControlName="rolNombre" >
+                                <ng-container *ngFor="let p of ListRoles">
+                                    <option  [ngValue]="p.rolNombre" *ngIf="p.rolNombre !== 'ROLE_INVITADO'">{{p.rolNombre}}</option>
+                                </ng-container> 
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                        <button class="boton form-control" (click)="crear()">Guardar</button>
+                    </div>
+                    <div class="col">
+                        <button class="boton form-control" routerLink="/empleados" [disabled]="!btnDisable && UsuarioForm.valid && empleadoForm.valid && RoleUserRolForm.valid">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="ListUsuario && tipo == 'update'" >
+            <div class="row mt-3 mb-5" style="color: white;">
+                <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                    <b style="vertical-align: middle;">||ACTUALIZACIÓN DEL EMPLEADO, TALLER VEHICULAR"</b>
+                  </div> 
+            </div>
+            <div class="row" style="color: white;">
+                <div class="col-6">
+                    <form [formGroup]="empleadoForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Nombre:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="nombre" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Apellidos:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="apellidos" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Cedula:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="cedula" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Correo:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text"  class="form-control" formControlName="email" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Telefono:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text"  class="form-control" formControlName="telefono" >
+                            </div>
+                        </div>
+                    </form>    
+                </div>
+                <div class="col-6" style="text-align: center;">
+                    <form [formGroup]="UsuarioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Usuario:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="nombreUsuario" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Imagen:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="search" class="form-control" formControlName="imagenUser" >
+                                
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Estado:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="estadoContrato" >
+                                    <option value=false> No autorizado </option>
+                                    <option value=true> Autorizado </option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <form [formGroup]="RoleUserRolForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Rol:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="id" >
+                                    <ng-container *ngFor="let p of ListRoles">
+                                        <option  [ngValue]="p.id" *ngIf="p.rolNombre !== 'ROLE_INVITADO'">{{p.rolNombre}}</option>
+                                    </ng-container> 
+                                </select>
+                            </div>
+                        </div>
+                    </form>   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button class="boton form-control" (click)="actualizar()">Guardar</button>
+                        </div>
+                        <div class="col">
+                            <button class="boton form-control" (click)="cambiar('vista')">Regresar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="mt-2" *ngIf="ListUsuario&& tipo == 'vista'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DATOS DEL EMPLEADO, TALLER VEHICULAR"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-5">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" >
+                        Cedula
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nro de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListUsuario.cedula}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Apellidos:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListUsuario.apellidos}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nombre:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListUsuario.nombre}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Telefono:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListUsuario.telefono}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Correo:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListUsuario.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;" >
+                <img src="{{ListUsuario.idUsuario.imagenUser}}" class="rounded-circle" style="margin: auto;">      
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Datos del Usuario</legend>
+                    <div class="control-group">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            Nombre:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" 
+                                        style="background-color: rgb(117, 0, 55); text-align: center; font-weight: bolder; margin: auto; border: 1px solid #FC7DB2;">
+                                            <p style="    margin: auto;">{{ListUsuario.idUsuario.nombreUsuario }}</p> 
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            ROL:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            {{ListUsuario.idUsuario.roles[0].rolNombre}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            Contrato:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            {{ListUsuario.idUsuario.estadoContrato}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                        <button class="boton form-control" (click)="cambiar('update')">Editar Datos</button>
+                    </div>
+                    <div class="col">
+                        <button class="boton form-control" routerLink="/empleados">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>

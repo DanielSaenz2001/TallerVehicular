@@ -1,0 +1,98 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div *ngIf="tipo=='lista'">
+        <div class="row mt-2" >
+            <div class="col-12">
+                <div  style="width: 40%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;
+                text-align: center; margin:0px auto;    padding: 10px;">
+                    <b>Modulo de Vehiculos en Reparacion</b>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-12" style="text-align: center;  ">
+                <button style="width: 180px !important; height: 60px; margin: auto;" class=" boton form-control" 
+                routerLink="/reparacion/registrar">
+                    <b>Registrar Vehiculo a Reparar</b>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="lista m-3" style="text-align: center;" *ngFor="let item of ListVehiculos">
+                <div class="row">
+                    <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4" style="text-align: center;margin: auto;">
+                        <img class="imagen" src="{{item.idVehiculoFactura.imagenVehiculo}}" width="100px">
+                        <p id="no"><b>Placa:</b>  {{item.placa}}</p> 
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <a id="no"><b>Marca: </b></a> {{item.idVehiculoFactura.marca}} <br>
+                        <a id="no"><b>Modelo: </b></a> {{item.idVehiculoFactura.modelo}} <br>
+                        <a id="no"><b>Tipo: </b></a> {{item.idVehiculoFactura.tipo}} <br>
+                    </div>
+                    <div class="col-12">
+                        <button class="boton form-control" routerLink="detalles/{{item.idVehiculoReparacion}}" >Ver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tipo=='registrar'">
+        <div class="row mt-2" >
+            <div class="col-12">
+                <div  style="width: 40%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;
+                text-align: center; margin:0px auto;    padding: 10px;">
+                    <b>Modulo de Registro Vehiculos en Reparacion</b>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" >
+                    <div style="text-align: center;">
+                        {{error}}
+                    </div>
+                    <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                      <span aria-hidden="true" style="color: black;">&times;</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" [hidden]="mensaje==null" >
+                    <div style="text-align: center;">
+                        {{mensaje}}
+                    </div>
+                    <button type="button" class="close"aria-label="Close" (click)="ocultar2()">
+                      <span aria-hidden="true" style="color: black;">&times;</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="lista m-3" style="text-align: center;" *ngFor="let item of Vehiculos">
+                <div class="row">
+                    <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4" style="text-align: center;margin: auto;">
+                        <img class="imagen" src="{{item.imagenVehiculo}}" width="100px">
+                        <p id="no"><b>Placa:</b>  {{item.placa}}</p> 
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <a id="no"><b>Marca: </b></a> {{item.marca}} <br>
+                        <a id="no"><b>Modelo: </b></a> {{item.modelo}} <br>
+                        <a id="no"><b>Tipo: </b></a> {{item.tipo}} <br>
+                    </div>
+                    <div class="col-12">
+                        <button class="boton form-control" (click)="registrar(item.idVehiculo)" >Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-12" style="text-align: center;  ">
+                <button style="width: 180px !important; height: 60px; margin: auto;" class=" boton form-control" routerLink="/reparacion">
+                    <b>Regresar</b>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>

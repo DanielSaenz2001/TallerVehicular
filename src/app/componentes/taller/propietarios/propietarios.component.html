@@ -1,0 +1,72 @@
+<app-sidebar></app-sidebar>
+<main>
+    
+    <div class="row mt-2">
+        <div class="col-12">
+            <div  style="width: 40%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;
+            text-align: center; margin:0px auto;    padding: 10px;">
+                <b>MODULO DE PROPIETARIOS</b>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 " style="margin: auto;">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5" >
+            <div class="row">
+                <div class="dato col-9 col-sm-9 col-md-6 col-lg-2 col-xl-2">
+                    Cedula:
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="text-align: center;">
+                    <input type="search" name="" id="" style="width: 200px; margin: auto;" class="form-control" [(ngModel)]="cedula">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+            <div class="row">
+                <div class="dato col-9 col-sm-9 col-md-6 col-lg-2 col-xl-2" >
+                    Nombre:
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                    <input type="search" name="" id="" style="width: 200px;margin: auto;" class="form-control" [(ngModel)]="nombre">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2" style="text-align: center;  ">
+            <button style="width: 120px; height: 40px; margin: auto;" class=" boton form-control  mt-1" (click)="filtro()">
+                <b>Filtrar</b>
+            </button>
+        </div>
+    </div>
+    <table class="table mt-3">
+        <thead style="background-color: #DAC0CF;">
+            <tr >
+            <th id="no3">#</th>
+            <th id="no">Rol</th>
+            <th id="no2">Cedula</th>
+            <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of listPropietarios; index as i">
+                <td routerLink="{{l.idPropietario}}" class="bordesid" id="no3" style=" text-align: center;   width: 1%;">{{i+1}}</td>
+                <td routerLink="{{l.idPropietario}}" class="bordes" id="no" style=" text-align: center;   width: 15%;">{{l.idUsuario.roles[0].rolNombre}}</td>
+                <td routerLink="{{l.idPropietario}}" class="bordes" id="no2"style=" text-align: center;   width: 15%;">{{l.cedula}}</td>
+                <td routerLink="{{l.idPropietario}}" class="bordes"  style=" text-align: center;   width: 15%;">{{l.nombre}} {{l.apellidos}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="bordesid" style="background-color: #DAC0CF;text-align: start;">
+                <th id="no3"></th>
+                <th id="no"></th>
+                <th id="no2"></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row mt-5">
+        <div class="col-12" style="text-align: center;  ">
+            <button style="width: 120px; height: 60px; margin: auto;" class=" boton form-control" routerLink="crear">
+                <b>Registrar Propietario</b>
+            </button>
+        </div>
+    </div>
+</main>

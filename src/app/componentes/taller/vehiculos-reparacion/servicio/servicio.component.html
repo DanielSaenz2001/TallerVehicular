@@ -1,0 +1,491 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="mt-2" *ngIf="tipo == 'vistaServicio'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DETALLES DEl PRESUPUESTO DEL VEHICULO"</b>
+              </div> 
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="lista m-3" style="text-align: center;" *ngFor="let item of ListServicio">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <h4>{{item.nombre}}</h4>
+                            <a id="no"><b>Precio por servicio: </b></a>{{item.precioServicio}} <br>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <a id="no"><b>Descripción: </b></a>{{item.descripcion}} <br>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <button style="width: 180px !important; "  class=" boton form-control" (click)="cambiar('verServicio', item.idServicio)">
+                                <b>Ver repuestos</b>
+                            </button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button  style="width: 180px !important;" class=" boton form-control" (click)="cambiar('agregarServicio')">
+                                <b>Agregar Servicio</b>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="regresar()">
+                               <b> Regresar</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="tipo == 'verServicio' && ListDetalleServicio">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DETALLES DEl PRESUPUESTO DEL VEHICULO"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-5">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" >
+                        Cedula
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nro de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.cedula}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Apellidos:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.apellidos}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nombre:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.nombre}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Telefono:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.telefono}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Correo:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListDetalleServicio.idEmpleadoServicio.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;" >
+                <img src="{{ListDetalleServicio.idEmpleadoServicio.idUsuario.imagenUser}}" class="rounded-circle" style="margin: auto;">      
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col mb-2 mt-2">
+                            <button class="boton form-control" style="width: 180px !important;" (click)="cambiar('actualizarServicio',ListDetalleServicio.idServicio)">Actualizar datos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Repuestos</legend>
+                    <div class="control-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="lista2 m-3" style="text-align: center;" *ngFor="let v of Repuestos">
+                                    <div class="row">
+                                        <div class="col-12 col-sm12 col-md-12 col-lg-12 col-xl-12" style="text-align: center;margin: auto;">
+                                            <h4> <p id="no"><b>Respuesto:</b>  {{v.idRespuesto.nombre}}</p> </h4>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <a id="no"><b>Precio: </b></a> {{v.idRespuesto.precio}} <br>
+                                            <a id="no"><b>Descuento: </b></a> {{v.descuentoRepuesto}} <br>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <button class="boton form-control" (click)="eliminarRepuesto(v.idServicioRepuesto)">Eliminar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('ListaRepuesto')">Agregar</button>
+                    </div>
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('vistaServicio')">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="tipo == 'agregarServicio'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||AGREGAR SERVICIO AL PRESUPUESTO"</b>
+              </div> 
+        </div>
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+                <div style="text-align: center;">
+                    {{error}}
+                </div>
+                <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                    <span aria-hidden="true" style="color: black;">&times;</span>
+                </button>
+            </div>
+            <div class="row" style="color: white;">
+                <div class="col-6">
+                    <form [formGroup]="ServicioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Nombre:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="nombre" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Precio:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="precioServicio" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Descuento:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="descuentoServicio" >
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6" >  
+                    <form [formGroup]="ServicioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Descripcion:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="descripcion" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Estado:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="habilitado" >
+                                    <option value=true> Habilitado </option>
+                                    <option value=false>Deshabilitado </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Empleado:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="idEmpleadoServicio" >
+                                    <ng-container *ngFor="let e of empleadosLista">
+                                        <option [ngValue]="e">{{e.nombre}} {{e.apellidos}}</option>
+                                    </ng-container>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="registrarServicio()">
+                                <b>Agregar</b>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="cambiar('vistaServicio')">
+                               <b> Regresar</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="tipo == 'actualizarServicio'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||Actualizar SERVICIO AL PRESUPUESTO"</b>
+              </div> 
+        </div>
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+                <div style="text-align: center;">
+                    {{error}}
+                </div>
+                <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                    <span aria-hidden="true" style="color: black;">&times;</span>
+                </button>
+            </div>
+            <div class="row" style="color: white;">
+                <div class="col-6">
+                    <form [formGroup]="ServicioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Nombre:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="nombre" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Precio:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="precioServicio" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Descuento:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="descuentoServicio" >
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6" >  
+                    <form [formGroup]="ServicioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Descripcion:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="descripcion" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Estado:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="habilitado" >
+                                    <option value=true> Habilitado </option>
+                                    <option value=false>Deshabilitado </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Empleado:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="idEmpleadoServicio" >
+                                    <ng-container *ngFor="let e of empleadosLista">
+                                        <option [ngValue]="e">{{e.nombre}} {{e.apellidos}}</option>
+                                    </ng-container>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="actualizarServicio()">
+                                <b>Actualizar</b>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="cambiar('verServicio', ServicioForm.value.idServicio)">
+                               <b> Regresar</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="tipo == 'ListaRepuesto'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DETALLES DEl PRESUPUESTO DEL VEHICULO"</b>
+              </div> 
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="lista m-3" style="text-align: center;" *ngFor="let item of respuestosLista">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <h4>{{item.nombre}}</h4>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <a id="no"><b>precio: </b></a>{{item.precio}} <br>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;">
+                            <button style="width: 180px !important; "  class=" boton form-control" (click)="agregarServicioRespuesto(item.idRespuesto)">
+                                <b>Agregar repuestos</b>
+                            </button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button  style="width: 120px !important;" class=" boton form-control" data-toggle="modal" data-target="#exampleModalCenter" >
+                                <b>Nuevo</b>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button  class=" boton form-control" (click)="cambiar('verServicio', idServicio)">
+                               <b> Regresar</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin: auto;">Registrar Repuesto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+            <div class="modal-body">
+                <div class="row" style="color: white;">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <form [formGroup]="RespuestoForm">
+                                    <div class="row mt-2 mb-2">
+                                        <div class="dato col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            Nombre:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <input type="text" class="form-control" formControlName="nombre" >
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2 mb-2">
+                                        <div class="dato col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            Precio:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <input type="text" class="form-control" formControlName="precio" >
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-5" style="text-align: center;">   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 mb-2" style=" text-align: center !important;">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 mb-2" style=" text-align: center !important;">
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="boton form-control" (click)="crearRepuesto()" data-dismiss="modal">Guardar</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="boton form-control" data-dismiss="modal">Regresar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+                    <div style="text-align: center;">
+                        {{error}}
+                    </div>
+                    <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                        <span aria-hidden="true" style="color: black;">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,674 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="mt-2" *ngIf="tipo == 'crear'" >
+        <div class="row mb-2">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||REGISTRO DEL PROPIETARIO, TALLER VEHICULAR"</b>
+            </div>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+            <div style="text-align: center;">
+                {{error}}
+            </div>
+            <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                <span aria-hidden="true" style="color: black;">&times;</span>
+            </button>
+        </div>
+        <div class="row mb-2" style="margin: auto;text-align: center;">
+            <img src="{{UsuarioForm.value.imagenUser}}" class="rounded-circle" style="width: 200px;margin: auto;">    
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <form [formGroup]="PropietarioForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Nombre:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="nombre" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Apellidos:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="apellidos" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Cedula:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="cedula" >
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Correo:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text"  class="form-control" formControlName="email" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Telefono:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text"  class="form-control" formControlName="telefono" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6" >  
+                <form [formGroup]="UsuarioForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Usuario:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="nombreUsuario" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Contraseña:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="text" class="form-control" formControlName="password" >
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Imagen:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <input type="search" class="form-control" formControlName="imagenUser" >
+                            
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Estado:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <select class="form-control" id="sel1" formControlName="estadoContrato" >
+                                <option value=true> Autorizado </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                
+                <form [formGroup]="RoleUserRolForm">
+                    <div class="row mb-5">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Rol:
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            <select class="form-control" id="sel1" formControlName="rolNombre" >
+                                <option [ngValue]="'ROLE_INVITADO'">ROLE_INVITADO</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                        <button class="boton form-control" (click)="crear()">Guardar</button>
+                    </div>
+                    <div class="col">                
+                        <button class="boton form-control" routerLink="/propietarios">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="ListPropietario && tipo == 'update'" >
+            <div class="row mt-3 mb-2" style="color: white;">
+                <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                    <b style="vertical-align: middle;">||ACTUALIZACIÓN DEL PROPIETARIO, TALLER VEHICULAR"</b>
+                </div> 
+            </div>
+            <div class="row" style="color: white;">
+                <div class="col-6">
+                    <form [formGroup]="PropietarioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Nombre:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="nombre" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Apellidos:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="apellidos" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Cedula:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="cedula" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Correo:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text"  class="form-control" formControlName="email" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Telefono:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text"  class="form-control" formControlName="telefono" >
+                            </div>
+                        </div>
+                    </form>
+                    <form [formGroup]="RoleUserRolForm">
+                        <div class="row">
+                            <div class="dato dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4" style="color: white;">
+                                Rol:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="id" >
+                                    <option [ngValue]="1">ROLE_INVITADO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6" >
+                    <form [formGroup]="UsuarioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Usuario:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="text" class="form-control" formControlName="nombreUsuario" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Imagen:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="search" class="form-control" formControlName="imagenUser" >
+                                
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Estado:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <select class="form-control" id="sel1" formControlName="estadoContrato" >
+                                    <option value=true> Autorizado </option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <form [formGroup]="PropietarioForm">
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Creacion:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="date" class="form-control" formControlName="fechaCreacion" >
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                                Actualizacion:
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <input type="date" class="form-control" formControlName="fechaActualizacion" >
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                    <div class="row">
+                        <div class="col">
+                            <button class="boton form-control" (click)="actualizar()">Guardar</button>
+                        </div>
+                        <div class="col">                
+                            <button class="boton form-control"  (click)="cambiar('vista')">Regresar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="mt-2" *ngIf="ListPropietario&& tipo == 'vista'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DATOS DEL PROPIETARIO, TALLER VEHICULAR"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-5">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" >
+                        Cedula
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nro de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.cedula}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Apellidos:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.apellidos}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nombre:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.nombre}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Telefono:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.telefono}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Correo:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;" >
+                <img src="{{ListPropietario.idUsuario.imagenUser}}" class="rounded-circle" style="margin: auto;">      
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Datos del Usuario</legend>
+                    <div class="control-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            Usuario:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" 
+                                        style="background-color: rgb(117, 0, 55); text-align: center; font-weight: bolder; margin: auto; border: 1px solid #FC7DB2;">
+                                            <p style="    margin: auto;">{{ListPropietario.idUsuario.nombreUsuario }}</p> 
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            ROL:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            {{ListPropietario.idUsuario.roles[0].rolNombre}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            Contrato:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            {{ListPropietario.idUsuario.estadoContrato}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-9 col-sm-9 col-md-6 col-lg-6 col-xl-6">
+                                            Contraseña:
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            {{ListPropietario.password}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-5" style="margin: auto;">
+                                    <div class="row mb-3">
+                                        <div class="dato col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <a data-toggle="modal" data-target="#exampleModalCenter" (click)="usuario('crear')" >
+                                                Ver empleado creador
+                                            </a> 
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <a  data-toggle="modal" data-target="#exampleModalCenter" (click)="usuario('actualizacion')">
+                                                Ver empleado actualizador
+                                            </a> 
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="dato col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <a  data-toggle="modal"  (click)="enviarEmail()">
+                                                Enviar Email
+                                            </a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('update')">Editar Datos</button>
+                    </div>
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('vehiculos')">Ver vehiculos</button>
+                    </div>
+                    <div class="col mb-2 mt-2">                
+                        <button class="boton form-control" routerLink="/propietarios">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="ListPropietario&& tipo == 'vehiculos'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||DATOS DEL PROPIETARIO, TALLER VEHICULAR"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-5">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Tipo de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" >
+                        Cedula
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nro de Documento:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.cedula}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white;">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Apellidos:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.apellidos}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Nombre:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.nombre}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                        Telefono:
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        {{ListPropietario.telefono}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;" >
+                <img src="{{ListPropietario.idUsuario.imagenUser}}" class="rounded-circle" style="margin: auto;">      
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Vehiculo</legend>
+                    <div class="control-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="lista m-3" style="text-align: center;" *ngFor="let v of vehiculos">
+                                    <div class="row">
+                                        <div class="col-9 col-sm-9 col-md-6 col-lg-7 col-xl-7" style="text-align: center;margin: auto;">
+                                            <img class="imagen" src="{{v.idVehiculo.imagenVehiculo}}" width="100px">
+                                            <p id="no"><b>Placa:</b>  {{v.idVehiculo.placa}}</p> 
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+                                            <a id="no"><b>Marca: </b></a> {{v.idVehiculo.marca}} <br>
+                                            <a id="no"><b>Modelo: </b></a> {{v.idVehiculo.modelo}} <br>
+                                            <a id="no"><b>Tipo: </b></a> {{v.idVehiculo.tipo}} <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('agregar')">Agregar</button>
+                    </div>
+                    <div class="col mb-2 mt-2">
+                        <button class="boton form-control" (click)="cambiar('vista')">Ver Usuario</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" *ngIf="tipo == 'agregar'">
+        <div class="row mt-3 mb-2" style="color: white;">
+            <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+                <b style="vertical-align: middle;">||AGREGAR VEHICULO AL PROPIETARIO {{ListPropietario.nombre}} 
+                    {{ListPropietario.apellidos}}, TALLER VEHICULAR"</b>
+              </div> 
+        </div>
+        <div class="row mt-3 mb-5" style="color: white;">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-8 col-xl-7" style="text-align: center; margin: auto;">
+                <div class="row">
+                    <div class="dato col-9 col-sm-9 col-md-5 col-lg-5 col-xl-5" style="text-align: center;margin: auto;">
+                        <label style="color: white;">Filtrado por Placa:</label> <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="text-align: center;">
+                        <input type="search"  style="margin: auto; width: 200px; " class="form-control" [(ngModel)]="placa">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-1">
+                        <button style="width: 120px; height: 40px; margin: auto;" class=" boton form-control" (click)="filtro()">
+                            <b>Filtrar</b>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="color: white; ">
+            <div class="col-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border" style="font-weight: bolder;">Vehiculos</legend>
+                    <div class="control-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" >
+                                        <div style="text-align: center;">
+                                            {{error}}
+                                        </div>
+                                        <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                                          <span aria-hidden="true" style="color: black;">&times;</span>
+                                        </button>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert" [hidden]="mensaje==null" >
+                                        <div style="text-align: center;">
+                                            {{mensaje}}
+                                        </div>
+                                        <button type="button" class="close"aria-label="Close" (click)="ocultar2()">
+                                          <span aria-hidden="true" style="color: black;">&times;</span>
+                                        </button>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="lista m-3" style="text-align: center;" *ngFor="let item of ListVehiculos">
+                                    <div class="row">
+                                        <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4" style="text-align: center;margin: auto;">
+                                            <img class="imagen" src="{{item.imagenVehiculo}}" width="100px">
+                                            <p id="no"><b>Placa:</b>  {{item.placa}}</p> 
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                            <a id="no"><b>Marca: </b></a> {{item.marca}} <br>
+                                            <a id="no"><b>Modelo: </b></a> {{item.modelo}} <br>
+                                            <a id="no"><b>Tipo: </b></a> {{item.tipo}} <br>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="boton form-control" (click)="agregar(item.idVehiculo)">Agregar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col mb-2 mt-2">                
+                        <button class="boton form-control" (click)="cambiar('vehiculos')">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="margin: auto;">c {{tipoV}} Por:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="UsuarioCAForm">
+            <div class="mb-2" style="margin: auto;text-align: center;">
+                <img src="{{UsuarioCAForm.value.idUsuario.imagenUser}}" class="rounded-circle" style="width: 80px;margin: auto;">    
+            </div>
+            <div class="row mb-2">
+                <div class="col-10">
+                    <div class="row">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Usuario: 
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            {{UsuarioCAForm.value.nombre}}  
+                            {{UsuarioCAForm.value.apellidos}} 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Email: 
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            {{UsuarioCAForm.value.email}}  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Cedula: 
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            {{UsuarioCAForm.value.cedula}}  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Telefono: 
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            {{UsuarioCAForm.value.telefono}}  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="dato col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+                            Rol: 
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                            {{rolCA}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+  

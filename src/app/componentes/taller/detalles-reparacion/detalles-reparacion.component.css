@@ -1,0 +1,42 @@
+main {
+    color: rgb(218, 192, 207);
+    margin-left: 5rem;
+    padding: 1rem; 
+}
+
+@media only screen and (max-width:599px){
+
+    main{
+        margin-right: 0%;
+        margin-left: 0%;
+        margin-top: 5rem;
+        width: 100%;
+    }
+}
+.lista{
+    border: 1px solid #D7D2D4;
+	border-radius: 20px;
+    box-shadow: 5px 5px 5px #EC808D;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+@media only screen and (max-width:540px){
+    .lista{
+        flex: 60%;
+    }
+}
+.boton{
+    width: 120px !important;
+    text-align: center !important;
+    margin: auto !important;
+    background-color: #daaeb3 !important;  
+    border: 1px solid #FC7DB2 !important; 
+    border-radius: 8px; 
+    color: black !important;
+}   
+.col-4, .col-sm-9 ,.col-md-4 ,.col-lg-4 ,.col-xl-4,.col-12 ,.col-sm-12 ,.col-md-8 ,.col-lg-8 ,.col-xl-8,.col-6
+.col-9 ,.col-md-4 ,.col-lg-4 ,.col-xl-4,.col-12 ,
+.col-sm-12 ,.col-md-8 ,.col-lg-8 ,.col-xl-8,.col-6, .col-md-6 ,.col-lg-6 ,.col-xl-6
+,.col-5 ,.col-7,.col-8,.col-md-6,.col-10{
+    position: initial;
+  }

@@ -1,0 +1,17 @@
+#navbarTogglerDemo02{
+    transition: all 0.3s;
+}
+
+@media(min-width:992px){
+        #navbarTogglerDemo02{margin-left: -2500px;}
+        
+}
+/* cambiar tipo de letra */
+nav.navbar ul.nav li {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+ 
+/* cambiar el color de fondo a la barra */
+nav.navbar {
+    background-color: #8b2a3f !important; 
+}

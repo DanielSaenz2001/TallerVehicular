@@ -1,0 +1,132 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="row mt-3 mb-2" style="color: white;">
+        <div  style="width: 90%; border: 1px solid #EC808D; color: #750036; background-color: #DAC0CF;">
+            <b style="vertical-align: middle;">||DETALLES DE REPARACION DEL VEHICULO"</b>
+          </div> 
+    </div>
+    <div class="row mb-3 mt-3">
+            <div class="lista m-3" style="text-align: center;" *ngFor="let item of ListEtapas">
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Registro'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <a id="no"><b>Fecha de Registro: </b></a>{{item.fechaInicio | date }} <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{item.idEmpleadoDetalle.nombre}} {{item.idEmpleadoDetalle.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{item.idEmpleadoDetalle.telefono}}  <br>
+                    </div>  
+                </div>
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Inspeccion'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <a id="no"><b>Fecha de Inicio: </b></a>{{item.fechaInicio | date }} <br>
+                        <a id="no"><b>Fecha de Fin: </b></a>{{item.fechaFin | date }} <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{item.idEmpleadoDetalle.nombre}} {{item.idEmpleadoDetalle.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{item.idEmpleadoDetalle.telefono}}  <br>
+                    </div>  
+                </div>
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Presupuesto'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <a id="no"><b>Costo final: </b></a>{{Suma}} <br>
+                        <div class="col-12" style="text-align: center;  ">
+                            <button style="width: 120px !important; height: 60px; margin: auto;" class=" boton form-control" routerLink="/detalles/reparacion/detalles/servicio/{{item.idDetalles}}">
+                                <b>Ver Detalles</b>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{item.idEmpleadoDetalle.nombre}} {{item.idEmpleadoDetalle.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{item.idEmpleadoDetalle.telefono}}  <br>
+                    </div> 
+                </div>
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Autorización'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <a id="no"><b>Fecha de Registro: </b></a>{{item.fechaInicio | date }} <br>
+                        <a id="no"><b>Fecha de Confirmacion: </b></a>{{item.fechaFin | date }} <br>
+                        <a id="no"><b>Autorizado: </b></a>{{item.confirmarReparacion }} <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{item.idEmpleadoDetalle.nombre}} {{item.idEmpleadoDetalle.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{item.idEmpleadoDetalle.telefono}}  <br>
+                    </div>  
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="text-align: center;margin: auto;" *ngIf="item.confirmarReparacion == false">
+                        <div class="col-12" style="text-align: center;  ">
+                            <button style="width: 120px !important; height: 60px; margin: auto;" class=" boton form-control" (click)="actualizarFase(item.idDetalles,item.idEtapaReparacion.idEtapas)">
+                                <b>Autorizar</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Reparación'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <a id="no"><b>Fecha de Inicio: </b></a>{{item.fechaInicio | date }} <br>
+                        <a id="no"><b>Fecha de Culminacion: </b></a>{{item.fechaFin| date }} <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{item.idEmpleadoDetalle.nombre}} {{item.idEmpleadoDetalle.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{item.idEmpleadoDetalle.telefono}}  <br>
+                    </div>  
+                </div>
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Control'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <a id="no"><b>Fecha de Control: </b></a>{{item.fechaInicio | date }} <br>
+                        <a id="no"><b>Fecha de Confirmacion: </b></a>{{item.fechaFin | date }} <br>
+                        <a id="no"><b>Autorizado: </b></a>{{item.confirmarReparacion }} <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{item.idEmpleadoDetalle.nombre}} {{item.idEmpleadoDetalle.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{item.idEmpleadoDetalle.telefono}}  <br>
+                    </div>  
+                </div>
+                <div class="row" *ngIf="item.idEtapaReparacion.nombre == 'Entrega'" 
+                style="text-align: center !important;">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 mb-3" style="text-align: center;margin: auto;" *ngIf="VehiculoReparacion.fechaSalida==null">
+                        <h4><b>Etapa:</b>  {{item.idEtapaReparacion.nombre}}</h4>
+                        <button style="width: 120px !important; height: 60px; margin: auto;" class=" boton form-control" >
+                            <b>En espera</b>
+                        </button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;" *ngIf="VehiculoReparacion.fechaSalida !==null">
+                        <b>Empleado:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{VehiculoReparacion.idEmpleadoFactura.nombre}} {{VehiculoReparacion.idEmpleadoFactura.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{VehiculoReparacion.idEmpleadoFactura.telefono}}  <br>
+                        <a id="no"><b>Proceso: </b></a>{{VehiculoReparacion.fase}}  <br>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mb-3" style="text-align: center;margin: auto;" *ngIf="VehiculoReparacion.fechaSalida !==null">
+                        <b>Propietario:</b><br>
+                        <a id="no"><b>Nombre: </b></a>{{VehiculoReparacion.idPropietarioFactura.nombre}} {{VehiculoReparacion.idPropietarioFactura.apellidos}}<br>
+                        <a id="no"><b>Telefono: </b></a>{{VehiculoReparacion.idEmpleadoFactura.telefono}}  <br>
+                        <a id="no"><b>Fecha de Recogo: </b></a>{{VehiculoReparacion.fechaSalida | date}}  <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-2" style=" text-align: center !important;">
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                        <button style=" height: 60px; margin: auto;" class=" boton form-control" routerLink="/detalles/reparacion">
+                           <b> Regresar</b>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>

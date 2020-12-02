@@ -1,0 +1,90 @@
+
+<app-navbar></app-navbar>
+<div class="container" >
+  
+    <div class="mt-5 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+        <div class="card rounded">
+        <div class="card-header" style="text-align: center; background-color: #8b2a3f; color: #f2f2f2;">Bienvenidos al <b>Sistema de Gestión de taller de Vehículos</b> de <b>Empresa Colombiana</b>.</div>
+        <div class="card-body">
+
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-12 col-form-label" style="text-align: center;"><b>Tipo:</b></label>
+                <div class="col-6" style="margin: auto;">
+                    <select [(ngModel)]="tipo" class="form-control" >
+                        <option class="form-control" selected>Usuario</option>
+                        <option  class="form-control" >Invitado</option>
+                    </select>
+                </div>
+            </div>
+            <div *ngIf="tipo =='Usuario'">
+                <form #loginForm=ngForm (ngSubmit)="onSubmit()">
+
+                    
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+                        <div style="text-align: center;">
+                            {{error}}
+                        </div>
+                        <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                            <span aria-hidden="true" style="color: black;">&times;</span>
+                        </button>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-12 col-form-label" style="text-align: center;"><b>Usuario</b></label>
+                        <div class="col-11" style="margin: auto;">
+                        <input type="email" name="email" class="form-control" width="300px" id="inputEmail3" placeholder="Usuario" [(ngModel)]="form.nombreUsuario" required >
+                        </div>
+                    </div>
+        
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-12 col-form-label" style="text-align: center;"><b>Contraseña</b></label>
+                        <div class="col-11" style="margin: auto;">
+                        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password" [(ngModel)]="form.password"
+                            required>
+                        </div>
+                    </div>
+        
+                    <div class="form-group row">
+                        <div class="col-12 " style="text-align: center;">
+                            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid" style="padding-right: 10%;
+                            padding-left: 10%; background: #992e45; border-color:#992e45;">Ingresar</button>
+                        </div>
+        
+                    </div>
+                    </form>
+            </div>
+            <div *ngIf="tipo =='Invitado'">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="error==null" style="width: 305px; margin: auto;">
+                    <div style="text-align: center;">
+                        {{error}}
+                    </div>
+                    <button type="button" class="close"aria-label="Close" (click)="ocultar()">
+                      <span aria-hidden="true" style="color: black;">&times;</span>
+                    </button>
+                  </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-12 col-form-label" style="text-align: center;"><b>Token:</b></label>
+                    <div class="col-11" style="margin: auto;">
+                        <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="TOKEN" [(ngModel)]="token" required >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 " style="text-align: center;">
+                        <button type="submit" class="btn btn-primary"  style="padding-right: 10%;
+                        padding-left: 10%; background: #992e45; border-color:#992e45;" (click)="loginToken()">Ingresar</button>
+                    </div>
+    
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-12 " style="bottom: 0; border-top: 0.1px solid #992e45;     background-color: #DAC0C8;">
+            <div class="row mt-2 mb-2">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="text-align: center;"> 
+                    <a routerLink="/RecuperarContraseña" style="text-align: center; color: black;">Recuperar Contraseña</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+  
