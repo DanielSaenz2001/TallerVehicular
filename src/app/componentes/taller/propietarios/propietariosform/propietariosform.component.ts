@@ -231,7 +231,7 @@ export class PropietariosformComponent implements OnInit {
         const fecha  = new Date();
         const fechaIni = this.datePipe.transform(fecha.getTime(), 'h:mm:ss a');
         const fechaFin = this.datePipe.transform(fecha.getTime()+28800000, 'h:mm:ss a');
-        this.context="Buen dia señor <b>" +this.ListPropietario.nombre+ " " + this.ListPropietario.apellidos+"</b>, identificado con la cedula a <b>" + this.ListPropietario.cedula+ "</b> <br> <br> El Taller de Vehiculos les da el acceso al sistema como invitado las proximas 8 horas desde "+fechaIni +" hasta las " +fechaFin +"<br> Este es su Token de acceso:<br> <b>Bearer " + this.res.token +"</b><br> <a href='http://localhost:4200/'>Entrar a Taller Vehicular</a>"
+        this.context="Buen dia señor <b>" +this.ListPropietario.nombre+ " " + this.ListPropietario.apellidos+"</b>, identificado con la cedula a <b>" + this.ListPropietario.cedula+ "</b> <br> <br> El Taller de Vehiculos les da el acceso al sistema como invitado las proximas 8 horas desde "+fechaIni +" hasta las " +fechaFin +"<br> Este es su Token de acceso:<br> <b>Bearer " + this.res.token +"</b><br> <a href='http://ec2-3-239-129-10.compute-1.amazonaws.com:4200/'>Entrar a Taller Vehicular</a>"
         this.email.content=this.context;
         this.email.email=this.ListPropietario.email;
         this.email.subject="Taller Vehicular Token"
