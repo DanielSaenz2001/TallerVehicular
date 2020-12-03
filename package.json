@@ -33,7 +33,7 @@
     "typescript": "~3.9.5"
   },
   "engines": {
-    "node": "12.x"
+    "node": "12.16.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.0",
