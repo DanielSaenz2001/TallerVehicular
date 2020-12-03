@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class VehiculosService {
 
-  endPoint ='http://192.168.1.35:8080/vehiculo'
+  endPoint ='http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/vehiculo'
   constructor(private http:HttpClient) { }
 
   lista(data){
@@ -42,7 +42,7 @@ export class VehiculosService {
     }) ;
   }
   vehiculos(id,token){
-    return this.http.get(`http://192.168.1.35:8080/propietariovehiculo/lista/vehiculos/${id}`,{ headers:{
+    return this.http.get(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/propietariovehiculo/lista/vehiculos/${id}`,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;

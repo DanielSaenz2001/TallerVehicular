@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ReportesService {
 
-  endPoint ='http://192.168.1.35:8080/reportes'
+  endPoint ='http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/reportes'
   constructor(private http:HttpClient) { }
 
   lista(data,token){

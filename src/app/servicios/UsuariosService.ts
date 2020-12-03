@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 })
 export class UsuariosService {
 
-  endPoint ='http://192.168.1.35:8080/usuario'
+  endPoint ='http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/usuario'
   constructor(private http:HttpClient) { }
 
   usuarios(data){
-    return this.http.get(`http://192.168.1.35:8080/empleado/lista`,{ headers:{
+    return this.http.get(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/empleado/lista`,{ headers:{
       'Authorization': "Bearer " + data,
       }
     }) ;
@@ -22,20 +22,20 @@ export class UsuariosService {
     }) ;
   }
   getById(id,token){
-    return this.http.get<any>(`http://192.168.1.35:8080/empleado/detail/${id}`,{ headers:{
+    return this.http.get<any>(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/empleado/detail/${id}`,{ headers:{
       'Authorization': "Bearer " + token,
       }
     });
   }
   usuariosFiltro(data,token){
-    return this.http.post(`http://192.168.1.35:8080/empleado/filtrar`, data,{ headers:{
+    return this.http.post(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/empleado/filtrar`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;
   }
 
   public actualizarEmpleado(id, data,token): Observable<any> {
-    return this.http.put<any>(`http://192.168.1.35:8080/empleado/update/${id}`, data,{ headers:{
+    return this.http.put<any>(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/empleado/update/${id}`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     });
@@ -47,13 +47,13 @@ export class UsuariosService {
     });
   }
   public createusuarios(data,token){
-    return this.http.post(`http://192.168.1.35:8080/auth/register`, data,{ headers:{
+    return this.http.post(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/auth/register`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;
   }
   public createEmpleado(data,token){
-    return this.http.post(`http://192.168.1.35:8080/empleado/create`, data,{ headers:{
+    return this.http.post(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/empleado/create`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;
@@ -71,7 +71,7 @@ export class UsuariosService {
     });
   }
   ActualizarEmpleado(id, data,token){
-    return this.http.put<any>(`http://192.168.1.35:8080/empleado/update/empleado/${id}`, data,{ headers:{
+    return this.http.put<any>(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/empleado/update/empleado/${id}`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     });

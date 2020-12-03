@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PropietarioService {
 
-  endPoint ='http://192.168.1.35:8080/propietario'
+  endPoint ='http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/propietario'
   constructor(private http:HttpClient) { }
 
   lista(data){
@@ -36,13 +36,13 @@ export class PropietarioService {
     });
   }
   actualizarUsuario(id, data,token): Observable<any> {
-    return this.http.put<any>(`http://192.168.1.35:8080/usuario/update/${id}`, data,{ headers:{
+    return this.http.put<any>(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/usuario/update/${id}`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     });
   }
   createusuarios(data,token){
-    return this.http.post(`http://192.168.1.35:8080/auth/register`, data,{ headers:{
+    return this.http.post(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/auth/register`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;
@@ -54,19 +54,19 @@ export class PropietarioService {
     }) ;
   }
   PropietarioEmail(data,token){
-    return this.http.post(`http://192.168.1.35:8080/email/send`, data,{ headers:{
+    return this.http.post(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/email/send`, data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;
   }
   vehiculos(id,token){
-    return this.http.get(`http://192.168.1.35:8080/propietariovehiculo/lista/propietarios/${id}`,{ headers:{
+    return this.http.get(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/propietariovehiculo/lista/propietarios/${id}`,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;
   }
   agregarvehiculos(data,token){
-    return this.http.post(`http://192.168.1.35:8080/propietariovehiculo/create`,data,{ headers:{
+    return this.http.post(`http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/propietariovehiculo/create`,data,{ headers:{
       'Authorization': "Bearer " + token,
       }
     }) ;

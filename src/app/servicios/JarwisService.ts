@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class JarwisService {
-
-  private baseUrl = 'http://192.168.1.35:8080/auth'; //Laravel Autentification
+  //http://ec2-3-239-129-10.compute-1.amazonaws.com:8080
+  private baseUrl = 'http://ec2-3-239-129-10.compute-1.amazonaws.com:8080/auth'; //Laravel Autentification
 
   constructor(private http: HttpClient) { }
 
